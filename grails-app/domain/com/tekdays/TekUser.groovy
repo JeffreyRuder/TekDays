@@ -14,7 +14,7 @@ class TekUser {
         fullName()
         userName()
         email email: true
-        website nullable: true, url: true
+        website blank: true
         bio maxSize: 5000
     }
 }

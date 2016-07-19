@@ -28,8 +28,8 @@ class BootStrap {
                 venue: 'TBD',
                 startDate: new Date('11/22/2016'),
                 endDate: new Date('11/25/2016'),
-                description: 'This camp will bring coders together to explore passionate, functional, ' +
-                        'stateless, multithreaded programming.')
+                description: '''This camp will bring coders together to explore passionate, functional,
+                        stateless, multithreaded programming.''')
         if(!event1.save()) {
             event1.errors.allErrors.each {error ->
                 println("An error occurred with event1 + ${error}")
@@ -76,6 +76,7 @@ class BootStrap {
         def sponsorship1 = new Sponsorship(event: event1, sponsor: sponsor1, contributionType: 'Other', description: "T-Shirts").save()
         def sponsorship2 = new Sponsorship(event: event2, sponsor: sponsor2, contributionType: 'Cash', description: '$5000').save()
     }
+
     def destroy = {
     }
 }

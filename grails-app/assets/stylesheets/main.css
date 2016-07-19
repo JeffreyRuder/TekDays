@@ -594,3 +594,16 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+.dashItem {
+	margin: 10px;
+}
+
+#eventBlurb {
+	width: 100%;
+	height: 60px;
+}
+
+#dashHeader {
+    text-align: center;
+}

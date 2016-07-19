@@ -13,7 +13,7 @@ class BootStrap {
                 email: 'jroe@mcc.com',
                 website: 'blog.mcc.com',
                 bio: '''Jane has been programming for over 40 years. She has worked with every programming language known and achieved
-             rockstar ninja pirate status in all of them.''').save()
+                    rockstar ninja pirate status in all of them.''').save()
 
         new TekUser(fullName: 'William Wallace',
                 userName: 'br4veh34rt',
@@ -29,7 +29,7 @@ class BootStrap {
                 startDate: new Date('11/22/2016'),
                 endDate: new Date('11/25/2016'),
                 description: '''This camp will bring coders together to explore passionate, functional,
-                        stateless, multithreaded programming.''')
+                    stateless, multithreaded programming.''')
         if(!event1.save()) {
             event1.errors.allErrors.each {error ->
                 println("An error occurred with event1 + ${error}")
@@ -73,8 +73,14 @@ class BootStrap {
                 website: 'http://weyland-yutani.com',
                 description: 'Building better worlds.').save()
 
-        def sponsorship1 = new Sponsorship(event: event1, sponsor: sponsor1, contributionType: 'Other', description: "T-Shirts").save()
-        def sponsorship2 = new Sponsorship(event: event2, sponsor: sponsor2, contributionType: 'Cash', description: '$5000').save()
+        def sponsorship1 = new Sponsorship(event: event1,
+                sponsor: sponsor1,
+                contributionType: 'Other',
+                description: "T-Shirts").save()
+        def sponsorship2 = new Sponsorship(event: event2,
+                sponsor: sponsor2,
+                contributionType: 'Cash',
+                description: '$5000').save()
     }
 
     def destroy = {

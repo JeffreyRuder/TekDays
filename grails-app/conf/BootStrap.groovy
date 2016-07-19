@@ -1,11 +1,28 @@
 import com.tekdays.TekEvent
+import com.tekdays.TekUser
 
 class BootStrap {
 
     def init = { servletContext ->
+
+        new TekUser(fullName: 'Jane Roe',
+                userName: 'jroe',
+                password: 'hashmepls',
+                email: 'jroe@mcc.com',
+                website: 'blog.mcc.com',
+                bio: '''Jane has been programming for over 40 years. She has worked with every programming language known and achieved
+             rockstar ninja pirate status in all of them.''').save()
+
+        new TekUser(fullName: 'William Wallace',
+                userName: 'br4veh34rt',
+                password: 'l337h4ckz',
+                email: 'w.wallace@atx.com',
+                website: 'www.pythonatx.com',
+                bio: '''William is a top notch Python programmer and a pretty good swordsman.''').save()
+
         def event1 = new TekEvent(name: 'My Code Camp',
                                     city: 'Portland, OR',
-                                    organizer: 'Jane Roe',
+                                    organizer: TekUser.findByFullName('Jane Roe'),
                                     venue: 'TBD',
                                     startDate: new Date('11/22/2016'),
                                     endDate: new Date('11/25/2016'),
@@ -19,7 +36,7 @@ class BootStrap {
 
         def event2 = new TekEvent(name: 'Deadly Python',
                                     city: 'Austin, TX',
-                                    organizer: 'William Wallace',
+                                    organizer: TekUser.findByFullName('William Wallace'),
                                     venue: 'Foobar Museum',
                                     startDate: new Date('10/2/2016'),
                                     endDate: new Date('10/4/2016'),

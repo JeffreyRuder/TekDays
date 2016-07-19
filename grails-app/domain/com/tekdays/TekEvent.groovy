@@ -3,7 +3,7 @@ package com.tekdays
 class TekEvent {
     String city
     String name
-    String organizer
+    TekUser organizer
     String venue
     Date startDate
     Date endDate

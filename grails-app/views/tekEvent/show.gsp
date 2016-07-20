@@ -92,6 +92,15 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${tekEventInstance?.respondents}">
+					<li class="fieldcontain">
+						<span id="respondents-label" class="property-label"><g:message code="tekEvent.respondents.label" default="Respondents" /></span>
+
+						<span class="property-value" aria-labelledby="respondents-label"><g:fieldValue bean="${tekEventInstance}" field="respondents"/></span>
+
+					</li>
+				</g:if>
 			
 				<g:if test="${tekEventInstance?.tasks}">
 				<li class="fieldcontain">
@@ -103,27 +112,18 @@
 					
 				</li>
 				</g:if>
-			
+
 				<g:if test="${tekEventInstance?.messages}">
-				<li class="fieldcontain">
-					<span id="messages-label" class="property-label"><g:message code="tekEvent.messages.label" default="Messages" /></span>
-					
-						<g:each in="${tekEventInstance.messages}" var="m">
-						<span class="property-value" aria-labelledby="messages-label"><g:link controller="tekMessage" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
+					<li class="fieldcontain">
+						<span id="messages-label" class="property-label"><g:message code="tekEvent.messages.label" default="Messages" /></span>
+
+
+						<span class="property-value" aria-labelledby="messages-label">
+							<g:link controller="tekMessage" action="index" id="${tekEventInstance.id}">View Messages</g:link>
+						</span>
+					</li>
 				</g:if>
-			
-				<g:if test="${tekEventInstance?.respondents}">
-				<li class="fieldcontain">
-					<span id="respondents-label" class="property-label"><g:message code="tekEvent.respondents.label" default="Respondents" /></span>
-					
-						<span class="property-value" aria-labelledby="respondents-label"><g:fieldValue bean="${tekEventInstance}" field="respondents"/></span>
-					
-				</li>
-				</g:if>
-			
+
 			</ol>
 			<g:form url="[resource:tekEventInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

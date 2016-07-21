@@ -607,3 +607,43 @@ a.skip {
 #dashHeader {
     text-align: center;
 }
+
+#homeSearch label {
+	font-weight: bold;
+}
+
+#welcome {
+	margin-left: 25px;
+	width: 85%;
+}
+
+.homeCell {
+	margin-left: 25px;
+	margin-top: 65px;
+	width: 85%;
+}
+
+.homeCell .buttons {
+	width: 180px;
+	text-align: center;
+	float: right;
+	margin-right: 30px;
+	margin-bottom: 30px;
+}
+
+h3, li {
+	margin-bottom: 15px;
+}
+
+.messageField {
+	width: 550px;
+}
+
+#messageList {
+	margin: 20px 30px;
+	overflow: auto;
+}
+
+#messageList p {
+	margin: 10px 0;
+}

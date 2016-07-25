@@ -10,6 +10,32 @@ class TekUserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def login() {
+        if (params.cName) {
+            return [cName:params.cName, aName:params.aName]
+        }
+    }
+
+    def logout() {
+        session.user = null
+        redirect(uri:'/')
+    }
+
+    def validate() {
+        def user = TekUser.findByUserName(params.username)
+        //TODO change to not use plain text password
+        if (user && user.password == params.password) {
+            session.user = user
+            if (params.cName)
+                redirect controller: params.cName, action: params.aName
+            else
+                redirect controller: 'tekEvent', action: 'index'
+        } else {
+            flash.message = "Invalid username and password."
+            render view: 'login'
+        }
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond TekUser.list(params), model:[tekUserInstanceCount: TekUser.count()]

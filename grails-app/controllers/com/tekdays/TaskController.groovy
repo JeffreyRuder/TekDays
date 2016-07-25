@@ -12,7 +12,22 @@ class TaskController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Task.list(params), model:[taskInstanceCount: Task.count()]
+
+        def list
+        def count
+        def event = TekEvent.get(params.id)
+
+        if (event) {
+            list = Task.findAllByEvent(event, params)
+            count = Task.countByEvent(event)
+        } else {
+            list = Task.list(params)
+            count = Task.count
+        }
+
+        render view: 'index', model: [taskInstanceList: list,
+                                          taskInstanceCount: count,
+                                          event: event]
     }
 
     def show(Task taskInstance) {

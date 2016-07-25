@@ -8,7 +8,10 @@ class BootStrap {
     def init = { servletContext ->
 
         //only create bootstrap data if database is empty
-        if (!TekEvent.get(1)) {
+        if (TekEvent.all.isEmpty()
+                && TekUser.all.isEmpty()
+                && Sponsor.all.isEmpty()
+                && Sponsorship.all.isEmpty()) {
 
             new TekUser(fullName: 'Jane Roe',
                     userName: 'jroe',
@@ -75,6 +78,9 @@ class BootStrap {
             def sponsor2 = new Sponsor(name: 'Weyland-Yutani',
                     website: 'http://weyland-yutani.com',
                     description: 'Building better worlds.').save()
+            def sponsor3 = new Sponsor(name: 'Tyrell Corporation',
+                    website: 'http://replica.nt',
+                    description: 'More human than human.').save()
 
             def sponsorship1 = new Sponsorship(event: event1,
                     sponsor: sponsor1,
@@ -84,6 +90,10 @@ class BootStrap {
                     sponsor: sponsor2,
                     contributionType: 'Cash',
                     description: '$5000').save()
+            def sponsorship3 = new Sponsorship(event: event2,
+                    sponsor: sponsor3,
+                    contributionType: 'Other',
+                    description: 'Security personnel').save()
         }
     }
 

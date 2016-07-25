@@ -13,8 +13,8 @@ class Task {
         notes blank: true, nullable: true, maxSize: 5000
         assignedTo nullable: true
         dueDate nullable: true
-        completed nullable: true
+        completed nullable: false
     }
 
-    static belongsTo = [TekEvent]
+    static belongsTo = TekEvent
 }

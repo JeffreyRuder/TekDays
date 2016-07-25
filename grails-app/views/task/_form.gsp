@@ -25,7 +25,13 @@
 		<g:message code="task.assignedTo.label" default="Assigned To" />
 		
 	</label>
-	<g:select id="assignedTo" name="assignedTo.id" from="${com.tekdays.TekUser.list()}" optionKey="id" value="${taskInstance?.assignedTo?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="assignedTo"
+			  name="assignedTo.id"
+			  from="${com.tekdays.TekUser.list()}"
+			  optionKey="id"
+			  value="${taskInstance?.assignedTo?.id}"
+			  class="many-to-one"
+			  noSelection="['null': '']"/>
 
 </div>
 
@@ -34,7 +40,12 @@
 		<g:message code="task.dueDate.label" default="Due Date" />
 		
 	</label>
-	<g:datePicker name="dueDate" precision="day"  value="${taskInstance?.dueDate}" default="none" years="${2016..2025} noSelection="['': '']" />
+	<g:datePicker name="dueDate"
+				  precision="day"
+				  value="${taskInstance?.dueDate}"
+				  default="none"
+				  years="${2016..2016}"
+				  noSelection="['null': '']" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'event', 'error')} required">

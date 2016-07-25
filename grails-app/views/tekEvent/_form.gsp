@@ -1,4 +1,4 @@
-<%@ page import="com.tekdays.TekEvent" %>
+<%@ page import="com.tekdays.TekUser; com.tekdays.TekEvent" %>
 
 
 
@@ -52,7 +52,7 @@
 		<g:message code="tekEvent.startDate.label" default="Start Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="startDate" precision="day"  value="${tekEventInstance?.startDate}" years="${2016..2025}" />
+	<g:datePicker name="startDate" precision="day" value="${tekEventInstance?.startDate}" years="${2016..2025}" />
 
 </div>
 
@@ -61,7 +61,7 @@
 		<g:message code="tekEvent.endDate.label" default="End Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="endDate" precision="day"  value="${tekEventInstance?.endDate}" years="${2016..2025}" />
+	<g:datePicker name="endDate" precision="day" value="${tekEventInstance?.endDate}" years="${2016..2025}" />
 
 </div>
 
@@ -70,7 +70,7 @@
 		<g:message code="tekEvent.volunteers.label" default="Volunteers" />
 		
 	</label>
-	<g:select name="volunteers" from="${com.tekdays.TekUser.list()}" multiple="multiple" optionKey="id" size="5" value="${tekEventInstance?.volunteers*.id}" class="many-to-many"/>
+	<g:select name="volunteers" from="${TekUser.list()}" multiple="multiple" optionKey="id" size="5" value="${tekEventInstance?.volunteers*.id}" class="many-to-many"/>
 
 </div>
 

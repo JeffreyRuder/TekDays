@@ -11,6 +11,9 @@
 			<h3>Welcome to TekDays</h3>
 			<p>TekDays assists individuals and communities in organizing technology conferences. TekDays brings brilliant minds with common interests and passions together for the greater good of coders everywhere!</p>
 		</div>
+
+		<g:organizerEvents/>
+
 		<div class="homeCell">
 			<h3>Find a TekEvent</h3>
 			<p>See if there's a technical event in the works that strikes your fancy. If there is, you can volunteer to help or just let the organizers know you'd be interested in attending.</p>

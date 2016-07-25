@@ -83,6 +83,11 @@ class TekEventController {
             return
         }
 
+        def sponsorships = Sponsorship.findAllByEvent(tekEventInstance)
+        sponsorships.each { sponsorshipInstance ->
+            sponsorshipInstance.delete flush: true
+        }
+
         tekEventInstance.delete flush:true
 
         request.withFormat {

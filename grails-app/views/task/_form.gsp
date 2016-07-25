@@ -34,8 +34,7 @@
 		<g:message code="task.dueDate.label" default="Due Date" />
 		
 	</label>
-	<g:datePicker name="dueDate" precision="day"  value="${taskInstance?.dueDate}" default="none" noSelection="['': '']" />
-
+	<g:datePicker name="dueDate" precision="day"  value="${taskInstance?.dueDate}" default="none" years="${2016..2025} noSelection="['': '']" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'event', 'error')} required">

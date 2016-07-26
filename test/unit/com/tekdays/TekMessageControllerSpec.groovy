@@ -6,13 +6,16 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(TekMessageController)
-@Mock(TekMessage)
+@Mock([TekMessage, TekEvent])
 class TekMessageControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params['subject'] = 'test subject'
+        params['content'] = 'test content'
+        params['parent'] = [subject: 'parent_subject', content: 'parent_content'] as TekMessage
+        params['event'] = [name: 'test_conference'] as TekEvent
+        params['author'] = [fullName: 'Testy McAuthor'] as TekUser
     }
 
     void "Test the index action returns the correct model"() {

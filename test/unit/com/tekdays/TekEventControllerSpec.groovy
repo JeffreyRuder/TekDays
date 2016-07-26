@@ -6,13 +6,18 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(TekEventController)
-@Mock(TekEvent)
+@Mock([TekEvent, TekUser, TekMessage, Sponsorship, Task])
 class TekEventControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["city"] = "TestCity, CA"
+        params["name"] = "Test Conference"
+        params["organizer"] = [fullName: "Testy McOrganizer"] as TekUser
+        params["venue"] = "Test Conference Center"
+        params["startDate"] = new Date()
+        params["endDate"] = new Date() + 1
+        params["description"] = "Test Description"
     }
 
     void "Test the index action returns the correct model"() {
@@ -34,6 +39,10 @@ class TekEventControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
+
+        given: "A mock taskService"
+            def mockTaskService = Mock(TaskService)
+            controller.taskService = mockTaskService
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE

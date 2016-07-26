@@ -11,8 +11,12 @@ class TekUserControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["fullName"] = 'Testy McTestface'
+        params["userName"] = 'test_username'
+        params["password"] = 'test_password'
+        params["email"] = 'test@email.com'
+        params["website"] = 'www.example.com'
+        params["bio"] = 'Test bio.'
     }
 
     void "Test the index action returns the correct model"() {

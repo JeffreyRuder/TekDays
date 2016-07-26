@@ -6,13 +6,17 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(TaskController)
-@Mock(Task)
+@Mock([Task, TekEvent])
 class TaskControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["title"] = "Test Task"
+        params["notes"] = "Test Notes"
+        params["assignedTo"] = [fullName: "Test User"] as TekUser
+        params["dueDate"] = new Date()
+        params["event"] = [name: "Test Conference"] as TekEvent
+        params["completed"] = false
     }
 
     void "Test the index action returns the correct model"() {
